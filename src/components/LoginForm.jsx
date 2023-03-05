@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { createUser } from "../api/user"
 
 const LoginForm = ({ handlePostLogin }) => {
 
@@ -9,7 +10,8 @@ const LoginForm = ({ handlePostLogin }) => {
     setState({ ...state, username: value })
   }
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
+    await createUser({ username: state.username })
     handlePostLogin(state.username)
   }
 
